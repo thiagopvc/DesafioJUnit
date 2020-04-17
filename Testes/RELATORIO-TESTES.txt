@@ -84,3 +84,6 @@ public class JulgamentoPrisioneiro {
 		}
 	}
 }
+
+
+ERRO: Resposta nao pode ser resolvido como uma variavel
