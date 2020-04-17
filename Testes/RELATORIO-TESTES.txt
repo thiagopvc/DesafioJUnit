@@ -1,0 +1,291 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class TesteJulgamentoPrisioneiro {
+
+	@Test
+	public void testeCulpados() {
+		String a = "Culpado";
+		String b = "Culpado";
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		
+		int resultadoEsperado = 5;
+		int resultadoReal = jp.calculaPena(a, b);
+		
+		assertEquals(resultadoEsperado, resultadoReal);
+		
+		
+	}
+	public void testeInocente() {
+		String a = "Inocente";
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		
+		int resultadoEsperado = 0;
+		int resultadoReal = jp.calculaPena(a, a);
+		
+		assertEquals(resultadoEsperado, resultadoReal);
+		
+		
+	}
+	
+	public void testeInocenteB() {
+		String a = "Culpado";
+		String b = "Inocente";
+		
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		
+		int resultadoEsperado = 10;
+		int resultadoReal = jp.calculaPena(a, b);
+		
+		assertEquals(resultadoEsperado, resultadoReal);
+		
+	}
+	
+	public void testeInocenteA() {
+		String b = "Culpado";
+		String a = "Inocente";
+		
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		
+		int resultadoEsperado = 1;
+		int resultadoReal = jp.calculaPena(a, b);
+		
+		assertEquals(resultadoEsperado, resultadoReal);
+	}
+	
+	
+}
+
+
+ERRO: metodo calculaResposta()  nao aceita String
+
+CORRECAO:
+
+public class JulgamentoPrisioneiro {
+	private int PENA_INOCENCIA = 13;
+	private int PENA_CONDENACAO_MUTUA = 15;
+	private int PENA_CONDENACAO_INDIVIDUAL = 10;
+	private int PENA_CONDENACAO_CUMPLICES = 11;
+
+	public int calculaPena(String respostaPrisioneiroA, String respostaPrisioneiroB) {
+		if (respostaPrisioneiroA == Resposta.DELACAO) {
+			if (respostaPrisioneiroB == Resposta.DELACAO) {
+				return PENA_CONDENACAO_MUTUA;
+			} else {
+				return PENA_INOCENCIA;
+			}
+		} else {
+			if (respostaPrisioneiroB == Resposta.DELACAO) {
+				return PENA_CONDENACAO_INDIVIDUAL;
+			} else {
+				return PENA_CONDENACAO_CUMPLICES;
+			}
+		}
+	}
+}
+
+
+ERRO: Resposta nao pode ser resolvido como uma variavel
+
+
+CORRECAO:
+
+public class JulgamentoPrisioneiro {
+	private int PENA_INOCENCIA = 13;
+	private int PENA_CONDENACAO_MUTUA = 15;
+	private int PENA_CONDENACAO_INDIVIDUAL = 10;
+	private int PENA_CONDENACAO_CUMPLICES = 11;
+
+	public int calculaPena(String respostaPrisioneiroA, String respostaPrisioneiroB) {
+		if (respostaPrisioneiroA == "Culpado") {
+			if (respostaPrisioneiroB == "Culpado") {
+				return PENA_CONDENACAO_MUTUA;
+			} else {
+				return PENA_INOCENCIA;
+			}
+		} else {
+			if (respostaPrisioneiroB == "Culpado") {
+				return PENA_CONDENACAO_INDIVIDUAL;
+			} else {
+				return PENA_CONDENACAO_CUMPLICES;
+			}
+		}
+	}
+}
+
+
+ERRO: Esperado um valor e veio outro
+
+
+CORRECAO:
+
+public class JulgamentoPrisioneiro {
+	private int PENA_INOCENCIA = 0;
+	private int PENA_CONDENACAO_MUTUA = 5;
+	private int PENA_CONDENACAO_INDIVIDUAL = 10;
+	private int PENA_CONDENACAO_CUMPLICES = 1;
+
+	public int calculaPena(String respostaPrisioneiroA, String respostaPrisioneiroB) {
+		if (respostaPrisioneiroA == "Culpado") {
+			if (respostaPrisioneiroB == "Culpado") {
+				return PENA_CONDENACAO_MUTUA;
+			} else {
+				return PENA_INOCENCIA;
+			}
+		} else {
+			if (respostaPrisioneiroB == "Culpado") {
+				return PENA_CONDENACAO_INDIVIDUAL;
+			} else {
+				return PENA_CONDENACAO_CUMPLICES;
+			}
+		}
+	}
+}
+
+
+ERRO: testeInocenteA() esperado 10 porem veio 0
+
+CORRECAO: 
+
+public class JulgamentoPrisioneiro {
+	private int PENA_INOCENCIA = 0;
+	private int PENA_CONDENACAO_MUTUA = 5;
+	private int PENA_CONDENACAO_INDIVIDUAL = 10;
+	private int PENA_CONDENACAO_CUMPLICES = 1;
+
+	public int calculaPena(String respostaPrisioneiroA, String respostaPrisioneiroB) {
+		if (respostaPrisioneiroA == "Culpado") {
+			if (respostaPrisioneiroB == "Culpado") {
+				return PENA_CONDENACAO_MUTUA;
+			} else {
+				return PENA_CONDENACAO_INDIVIDUAL;
+			}
+		} else {
+			if (respostaPrisioneiroB == "Culpado") {
+				return PENA_CONDENACAO_INDIVIDUAL;
+			} else {
+				return PENA_CONDENACAO_CUMPLICES;
+			}
+		}
+	}
+}
+
+
+ERRO: testeInocente() esperava 0 porem veio 1
+
+CORRECAO: 
+
+public class JulgamentoPrisioneiro {
+	private int PENA_INOCENCIA = 0;
+	private int PENA_CONDENACAO_MUTUA = 5;
+	private int PENA_CONDENACAO_INDIVIDUAL = 10;
+	private int PENA_CONDENACAO_CUMPLICES = 1;
+
+	public int calculaPena(String respostaPrisioneiroA, String respostaPrisioneiroB) {
+		if (respostaPrisioneiroA == "Culpado") {
+			if (respostaPrisioneiroB == "Culpado") {
+				return PENA_CONDENACAO_MUTUA;
+			} else {
+				return PENA_CONDENACAO_INDIVIDUAL;
+			}
+		} else {
+			if (respostaPrisioneiroB == "Culpado") {
+				return PENA_CONDENACAO_INDIVIDUAL;
+			} else {
+				return PENA_INOCENCIA;
+			}
+		}
+	}
+}
+
+
+ERRO: testeInocenteA() esperado 1 porem veio 10
+
+CORRECAO RODANDO TODOS OS TESTES:
+
+public class JulgamentoPrisioneiro {
+	private int PENA_INOCENCIA = 0;
+	private int PENA_CONDENACAO_MUTUA = 5;
+	private int PENA_CONDENACAO_INDIVIDUAL = 10;
+	private int PENA_CONDENACAO_CUMPLICES = 1;
+
+	public int calculaPena(String respostaPrisioneiroA, String respostaPrisioneiroB) {
+		if (respostaPrisioneiroA == "Culpado") {
+			if (respostaPrisioneiroB == "Culpado") {
+				return PENA_CONDENACAO_MUTUA;
+			} else {
+				return PENA_CONDENACAO_INDIVIDUAL;
+			}
+		} else {
+			if (respostaPrisioneiroB == "Culpado") {
+				return PENA_CONDENACAO_CUMPLICES;
+			} else {
+				return PENA_INOCENCIA;
+			}
+		}
+	}
+}
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class TesteJulgamentoPrisioneiro {
+
+	@Test
+	public void testeCulpados() {
+		String a = "Culpado";
+		String b = "Culpado";
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		
+		int resultadoEsperado = 5;
+		int resultadoReal = jp.calculaPena(a, b);
+		
+		assertEquals(resultadoEsperado, resultadoReal);
+		
+		
+	}
+	
+	@Test
+	public void testeInocente() {
+		String a = "Inocente";
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		
+		int resultadoEsperado = 0;
+		int resultadoReal = jp.calculaPena(a, a);
+		
+		assertEquals(resultadoEsperado, resultadoReal);
+		
+		
+	}
+	
+	@Test
+	public void testeInocenteB() {
+		String a = "Culpado";
+		String b = "Inocente";
+		
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		
+		int resultadoEsperado = 10;
+		int resultadoReal = jp.calculaPena(a, b);
+		
+		assertEquals(resultadoEsperado, resultadoReal);
+		
+	}
+	
+	@Test
+	public void testeInocenteA() {
+		String b = "Culpado";
+		String a = "Inocente";
+		
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		
+		int resultadoEsperado = 1;
+		int resultadoReal = jp.calculaPena(a, b);
+		
+		assertEquals(resultadoEsperado, resultadoReal);
+	}
+	
+	
+}
