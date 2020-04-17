@@ -198,3 +198,6 @@ public class JulgamentoPrisioneiro {
 		}
 	}
 }
+
+
+ERRO: testeInocenteA() esperado 1 porem veio 10
