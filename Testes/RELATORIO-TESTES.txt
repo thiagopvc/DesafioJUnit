@@ -170,3 +170,6 @@ public class JulgamentoPrisioneiro {
 		}
 	}
 }
+
+
+ERRO: testeInocente() esperava 0 porem veio 1
