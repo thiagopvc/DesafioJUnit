@@ -1,0 +1,61 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class TesteJulgamentoPrisioneiro {
+
+	@Test
+	public void testeCulpados() {
+		String a = "Culpado";
+		String b = "Culpado";
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		
+		int resultadoEsperado = 5;
+		int resultadoReal = jp.calculaPena(a, b);
+		
+		assertEquals(resultadoEsperado, resultadoReal);
+		
+		
+	}
+	public void testeInocente() {
+		String a = "Inocente";
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		
+		int resultadoEsperado = 0;
+		int resultadoReal = jp.calculaPena(a, a);
+		
+		assertEquals(resultadoEsperado, resultadoReal);
+		
+		
+	}
+	
+	public void testeInocenteB() {
+		String a = "Culpado";
+		String b = "Inocente";
+		
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		
+		int resultadoEsperado = 10;
+		int resultadoReal = jp.calculaPena(a, b);
+		
+		assertEquals(resultadoEsperado, resultadoReal);
+		
+	}
+	
+	public void testeInocenteA() {
+		String b = "Culpado";
+		String a = "Inocente";
+		
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		
+		int resultadoEsperado = 1;
+		int resultadoReal = jp.calculaPena(a, b);
+		
+		assertEquals(resultadoEsperado, resultadoReal);
+	}
+	
+	
+}
+
+
+ERRO: metodo calculaResposta()  nao aceita String
